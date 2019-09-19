@@ -1,0 +1,32 @@
+/*
+*
+* main.css
+*
+*/
+
+body {
+	background-color: #111;
+	margin: 0;
+	text-align: center;
+}
+
+.pie circle {
+	fill: none;
+	stroke: none;
+	stroke-width: 400px;
+	transition: opacity 1s;
+}
+
+.pie circle.is-greyish {
+	opacity: .5;
+}
+
+.pie text {
+	font-family: "Assistant", sans-serif;
+	font-size: 64px;
+	font-weight: bold;
+}
+
+.pie text.smaller {
+	font-size: 24px;
+}

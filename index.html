@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+
+	<title>Vue SVG animation experiment</title>
+
+	<script src="js/vue.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<svg id="clock" xmlns="http://www.w3.org/2000/svg" xml:lang="en"
+	xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000" width="1000" height="1000" style="max-width: 100vw;">
+
+	<g transform="translate(500, 500)" fill="white" class="pie">
+
+		<text x="-450" y="-420" v-bind:fill="colors[segments[activeSegment]]" v-html="titles[segments[activeSegment]]"></text>
+
+		<circle v-for="(segment, n) in segments" cx="0" cy="0" r="200px" v-bind:fill="segment" v-bind:style="'stroke-dasharray: 52.36px 1204.28px; stroke: ' + colors[segment] +'; stroke-dashoffset: ' +  (314.16 - n * introAnim * 52.36) + 'px;'" :class="n == activeSegment ? '' : 'is-greyish'" />
+
+		<text x="450" y="20" text-anchor="middle" fill="#404040">3</text>
+		<text x="0" y="470" text-anchor="middle" fill="#404040">6</text>
+		<text x="-450" y="20" text-anchor="middle" fill="#404040">9</text>
+		<text x="0" y="-420" text-anchor="middle" fill="#404040">12</text>
+
+		<text x="450" y="-420" text-anchor="end" v-bind:fill="colors['standup']" v-if="meterToNextStandup > 0" v-html="parseInt(720 * meterToNextStandup) + ' minutes to next stand up'" class="smaller"></text>
+
+		<g v-bind:transform="'rotate(' + 360 * meter + ')'" fill="white">
+			<g transform="rotate(180) translate(-205.000000, 155.000000) ">
+	            <path d="M205.871245,251.059671 L215.250771,263.162285 C216.265713,264.471888 216.026843,266.356303 214.717241,267.371245 C214.191341,267.778818 213.544872,268 212.879526,268 L194.120474,268 C192.46362,268 191.120474,266.656854 191.120474,265 C191.120474,264.334654 191.341657,263.688185 191.749229,263.162285 L201.128755,251.059671 C202.143697,249.750069 204.028112,249.511199 205.337715,250.526141 C205.537303,250.680822 205.716564,250.860083 205.871245,251.059671 Z"></path>
+	        </g>
+        </g>
+	</g>
+
+</svg>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
